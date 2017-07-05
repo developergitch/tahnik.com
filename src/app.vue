@@ -1,30 +1,19 @@
 <template>
-  <div id="app">
-    <h2>Hello World</h2>
+  <div class="app">
+    <router-view></router-view>
   </div>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
+@import './assets/palette.scss';
+
+body {
+  margin: 0;
   padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+  background-color: $color4;
+  .app {
+    height: 100vh;
+    width: 100vw;
+  }
 }
 </style>

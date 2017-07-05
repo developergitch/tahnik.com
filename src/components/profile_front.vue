@@ -79,8 +79,9 @@ export default {
       img {
         display: block;
         width: 15vw;
-        max-width: 200px;
-        min-width: 100px;
+        @media screen and (max-width: 480px) {
+          width: 400px;
+        }
         height: auto;
         margin: 0 auto;
         border-radius: 100%;
@@ -94,6 +95,9 @@ export default {
       text-align: center;
       margin-bottom: 1rem;
       font-family: 'Heebo', sans-serif;
+      @media screen and (max-width: 480px) {
+        font-size: 2rem;
+      }
     }
     .line {
       height: 3px;
@@ -106,7 +110,9 @@ export default {
       flex: 1;
       color: $color1;
       font-size: 3rem;
-      // font-family: 'Titillium Web', sans-serif;
+      @media screen and (max-width: 480px) {
+        font-size: 6rem;
+      }
       font-family: 'Quicksand', sans-serif;
       padding: 1rem 0;
       display: flex;
@@ -119,6 +125,9 @@ export default {
         padding: 0.7rem;
         border: 2px solid $color1;
         font-size: 1.5rem;
+        @media screen and (max-width: 480px) {
+          font-size: 2.5rem;
+        }
         border-radius: 5px;
         color: $color1;
         opacity: 0.4;

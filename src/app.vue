@@ -13,7 +13,10 @@ body {
   background-color: $color4;
   .app {
     height: 100vh;
-    width: 100vw;
   }
+}
+
+p {
+  font-family: 'Heebo', sans-serif;
 }
 </style>

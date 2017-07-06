@@ -12,10 +12,10 @@
         "value": "*"
       }]
     }, {
-      "source": "**/*.@(jpg|jpeg|gif|png)",
+      "source": "**/*.@(jpg|jpeg|gif|png|js|ttf)",
       "headers": [{
         "key": "Cache-Control",
-        "value": "max-age=7200"
+        "value": "max-age=604800"
       }]
     }, {
       "source": "404.html",

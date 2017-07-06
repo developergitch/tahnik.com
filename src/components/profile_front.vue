@@ -1,11 +1,12 @@
 <template>
 <div class="front">
   <div class="profile_card">
-    <div class="picture">
-      <img src="../assets/profile.jpg" alt="tahnik">
-    </div>
     <div class="name">
-      <span>Tahnik Mustasin</span>
+      <span class="first">Tahnik</span>
+      <span class="second">Mustasin</span>
+    </div>
+    <div class="role">
+      <span id="role_name">Software Engineer</span>
     </div>
     <div class="line"></div>
     <div class="summary">
@@ -29,6 +30,7 @@
 </template>
 
 <script>
+import Typed from 'typed.js';
 export default {
   data() {
     return {
@@ -51,6 +53,20 @@ export default {
       ]
     }
   },
+  mounted() {
+    let typed = new Typed('#role_name', {
+      strings: [
+        'Software Engineer',
+        'Front-End Developer',
+        'Back-End Developer',
+        'Server Administrator'
+      ],
+      typeSpeed: 50,
+      loop: true,
+      fadeOut: true,
+      startDelay: 1500,
+    });
+  },
   methods: {
     openLink(url) {
       window.open(url, '_blank');
@@ -61,7 +77,7 @@ export default {
 
 <style lang="scss">
 @import '../assets/palette.scss';
-@import url('https://fonts.googleapis.com/css?family=Heebo|Quicksand');
+@import url('https://fonts.googleapis.com/css?family=Heebo|Quicksand:300,400,700');
 .front {
   display: flex;
   justify-content: center;
@@ -78,7 +94,8 @@ export default {
       position: relative;
       img {
         display: block;
-        width: 15vw;
+        width: 20rem;
+        max-width: 300px;
         @media screen and (max-width: 480px) {
           width: 400px;
         }
@@ -109,27 +126,37 @@ export default {
     .name {
       flex: 1;
       color: $color1;
-      font-size: 3rem;
-      @media screen and (max-width: 480px) {
-        font-size: 6rem;
-      }
       font-family: 'Quicksand', sans-serif;
       padding: 1rem 0;
       display: flex;
       justify-content: center;
+      .first {
+        font-size: 5rem;
+        font-weight: 700;
+      }
+      .second {
+        font-size: 5rem;
+        font-weight: 300;
+      }
+    }
+    .role {
+      flex: 1;
+      margin: 0 0 1.2rem 0;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 2rem;
     }
     .social {
       max-width: 80rem;
       display: flex;
       .link {
         padding: 0.7rem;
-        border: 2px solid $color1;
-        font-size: 1.5rem;
+        border: 2px solid $color3;
+        font-size: 1.2rem;
         @media screen and (max-width: 480px) {
           font-size: 2.5rem;
         }
         border-radius: 5px;
-        color: $color1;
+        color: $color3;
         opacity: 0.4;
         transition: 0.4s all;
         margin-right: 1rem;

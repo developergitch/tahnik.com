@@ -116,42 +116,110 @@
     </div>
   </div>
   <div class="project elearning">
-    <div class="description">
-      <h1>eLearning</h1>
-      <p>I tested a LMS website for 6 months working with our web developer in Chosen Care Group. This included filing bugs to developer and verifying the fix. Once the website was finished I created eLearning content using Adobe Captivate
-      </p>
-      <h3>Skills Gained</h3>
-      <div class="skills">
-        <div class="skill web">
-          Testing
-        </div>
-        <div class="skill tool">
-          Captivate
-        </div>
-        <div class="skill tool">Photoshop
-        </div>
-        <div class="skill desktop">
-          Design
+    <div class="left">
+      <div class="description">
+        <h1>eLearning</h1>
+        <p>I tested a LMS website for 6 months working with our web developer in Chosen Care Group. This included filing bugs to developer and verifying the fix. Once the website was finished I created eLearning content using Adobe Captivate
+        </p>
+        <h3>Skills Gained</h3>
+        <div class="skills">
+          <div class="skill web">
+            Testing
+          </div>
+          <div class="skill tool">
+            Captivate
+          </div>
+          <div class="skill tool">Photoshop
+          </div>
+          <div class="skill desktop">
+            Design
+          </div>
         </div>
       </div>
     </div>
     <div class="right">
-      <img src="../assets/elearning.png" alt="" />
+      <div class="description">
+        <h1>Animated Video</h1>
+        <p>Created multiple animated video using GoAnimate to describe things like payroll, induction day etc. Also I know video using Adobe premier which I used for green screen editing for training and marketing videos
+        </p>
+        <h3>Skills Gained</h3>
+        <div class="skills">
+          <div class="skill tool">Photoshop
+          </div>
+          <div class="skill desktop">GoAnimate
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="project animated">
-    <div class="left">
-      <img src="../assets/animated.png" alt="" />
+  <div class="header">
+    <span class="header_text">Work Experiences</span>
+  </div>
+  <div class="line"></div>
+  <div class="work buhler">
+    <div class="description">
+      <h1>Software Engineer</h1>
+      <h5>Buhler UK Limited</h5>
+      <p>
+        Working with 7 different developers from 4 different continents on an open source application for a developer community website. We use ReactJS and Electron to build the cross platform application, using CI Pipelines we run test to make sure we are writing valid and quality code. I started the project initially and am currently managing it.
+      </p>
+    </div>
+    <div class="center">
+      <img src="../assets/Buhler.png" alt="" />
     </div>
     <div class="description">
-      <h1>Animated Video</h1>
-      <p>Created multiple animated video using GoAnimate to describe things like payroll, induction day etc. Also I know video using Adobe premier which I used for green screen editing for training and marketing videos
-      </p>
       <h3>Skills Gained</h3>
       <div class="skills">
-        <div class="skill tool">Photoshop
+        <div class="skill web">
+          AWS EC2
         </div>
-        <div class="skill desktop">GoAnimate
+        <div class="skill desktop">
+          Linux
+        </div>
+        <div class="skill web">
+          AWS S3
+        </div>
+        <div class="skill tool">
+          GitLab
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="work ccg">
+    <div class="left">
+      <div class="description">
+        <h1>IT Consultant</h1>
+        <h5>Chosen Care Group</h5>
+        <p>I tested a LMS website for 6 months working with our web developer in Chosen Care Group. This included filing bugs to developer and verifying the fix. Once the website was finished I created eLearning content using Adobe Captivate
+        </p>
+        <h3>Skills Gained</h3>
+        <div class="skills">
+          <div class="skill web">
+            Testing
+          </div>
+          <div class="skill tool">
+            Captivate
+          </div>
+          <div class="skill tool">Photoshop
+          </div>
+          <div class="skill desktop">
+            Design
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="description">
+        <h1>IT Support</h1>
+        <h5>Speiuss Ltd.</h5>
+        <p>Created multiple animated video using GoAnimate to describe things like payroll, induction day etc. Also I know video using Adobe premier which I used for green screen editing for training and marketing videos
+        </p>
+        <h3>Skills Gained</h3>
+        <div class="skills">
+          <div class="skill tool">Photoshop
+          </div>
+          <div class="skill desktop">GoAnimate
+          </div>
         </div>
       </div>
     </div>
@@ -209,7 +277,7 @@ export default {
     font-size: 3rem;
     margin-top: 0;
   }
-  .project {
+  .project, .work {
     display: flex;
     justify-content: center;
     overflow-x: hidden;
@@ -224,6 +292,9 @@ export default {
       h3 {
         text-align: center;
         margin-bottom: 0;
+      }
+      h5 {
+        margin-top: 0;
       }
     }
     img {
@@ -266,9 +337,11 @@ export default {
     }
     .left {
       flex: 2;
+      z-index: 99;
     }
     .right {
       flex: 2;
+      z-index: 99;
     }
   }
   .devrantron {
@@ -286,11 +359,17 @@ export default {
     }
     .left {
       margin-left: -7rem;
-      transform: rotateY(2deg)
+      transition: 0.4s all;
+      &:hover {
+        transform: translateX(10rem);
+      }
     }
     .right {
       margin-right: -7rem;
-      transform: rotateY(-2deg)
+      transition: 0.4s all;
+      &:hover {
+        transform: translateX(-10rem);
+      }
     }
   }
   .aws {
@@ -315,6 +394,38 @@ export default {
     }
     img {
       box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
+  }
+  .buhler {
+    padding-top: 5rem;
+    flex-direction: column;
+    h1 {
+      margin-bottom: 1rem;
+    }
+    h5 {
+      text-align: center;
+    }
+    .center {
+      width: 100%;
+      padding: 1rem 0;
+      img {
+        display: block;
+        margin: 0 auto;
+        width: 85vw;
+      }
+    }
+    .description {
+      h1 {
+        text-align: center;
+      }
+      p {
+        text-align: center;
+      }
+    }
+  }
+  .ccg {
+    h1 {
+      margin-bottom: 1rem;
     }
   }
   .lluvium {

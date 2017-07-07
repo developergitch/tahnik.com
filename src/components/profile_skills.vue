@@ -36,6 +36,34 @@
       <img src="../assets/devrantron1.jpg" alt="" />
     </div>
   </div>
+  <div class="project aws">
+    <div class="description">
+      <h1>Amazon AWS Migration</h1>
+      <p>
+        Working with 7 different developers from 4 different continents on an open source application for a developer community website. We use ReactJS and Electron to build the cross platform application, using CI Pipelines we run test to make sure we are writing valid and quality code. I started the project initially and am currently managing it.
+      </p>
+    </div>
+    <div class="center">
+      <img src="../assets/AWSMigration.svg" alt="" />
+    </div>
+    <div class="description">
+      <h3>Skills Gained</h3>
+      <div class="skills">
+        <div class="skill web">
+          AWS EC2
+        </div>
+        <div class="skill desktop">
+          Linux
+        </div>
+        <div class="skill web">
+          AWS S3
+        </div>
+        <div class="skill tool">
+          GitLab
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="project plookify">
     <div class="left">
       <img src="../assets/se.png" alt="" />
@@ -160,6 +188,8 @@
     justify-content: center;
     overflow-x: hidden;
     padding-bottom: 10rem;
+    perspective: 200px;
+    transform-style: preserve-3d;
     .description {
       flex: 2;
       margin: 0 1rem;
@@ -216,6 +246,7 @@
     }
   }
   .devrantron {
+    padding-top: 5rem;
     .description {
       h1 {
         text-align: center;
@@ -229,9 +260,35 @@
     }
     .left {
       margin-left: -7rem;
+      transform: rotateY(2deg)
     }
     .right {
       margin-right: -7rem;
+      transform: rotateY(-2deg)
+    }
+  }
+  .aws {
+    padding-top: 5rem;
+    flex-direction: column;
+    .center {
+      width: 100%;
+      padding: 1rem 0;
+      img {
+        display: block;
+        margin: 0 auto;
+        width: 60rem;
+      }
+    }
+    .description {
+      h1 {
+        text-align: center;
+      }
+      p {
+        text-align: center;
+      }
+    }
+    img {
+      box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     }
   }
   .lluvium {

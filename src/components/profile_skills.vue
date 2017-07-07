@@ -159,6 +159,32 @@
 </div>
 </template>
 
+<script>
+export default {
+  mounted() {
+    const devRantron = document.getElementsByClassName("devrantron")[0];
+    window.addEventListener('scroll', () => this.isScrolledInView(devRantron), false);
+  },
+  destroyed() {
+    const devRantron = document.getElementsByClassName("devrantron")[0];
+    window.removeEventListener('scroll', () => this.isScrolledInView(devRantron), false);
+  },
+  methods: {
+    isScrolledInView(element) {
+      let rect = element.getBoundingClientRect();
+
+      const scrolledInView = (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
+      );
+      console.log(scrolledInView);
+    }
+  }
+}
+</script>
+
 <style lang="scss">
 @import '../assets/palette.scss';
 .projects {

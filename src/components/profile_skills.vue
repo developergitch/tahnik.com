@@ -4,115 +4,54 @@
     <span class="header_text">Projects</span>
   </div>
   <div class="line"></div>
-  <div class="project devrantron">
-    <div class="left">
-      <img src="../assets/devrantron2.jpg" alt="" />
+  <div
+    v-for="project in projects"
+    v-bind:class="'project ' + project.name"
+    v-bind:key="project.name"
+  >
+    <div class="left" v-if="project.type === 'both' || project.type === 'left'">
+      <img v-bind:src="project.left" alt=""></img>
     </div>
-    <div class="description">
-      <h1>devRantron</h1>
+    <div
+      class="description"
+    >
+      <h1>{{ project.title }}</h1>
       <p>
-        Working with 7 different developers from 4 different continents on an open source application for a developer community website. We use ReactJS and Electron to build the cross platform application, using CI Pipelines we run test to make sure we are writing valid and quality code. I started the project initially and am currently managing it.
+        {{ project.description }}
       </p>
-      <h3>Skills Gained</h3>
-      <div class="skills">
-        <div class="skill web">
-          ReactJS
-        </div>
-        <div class="skill desktop">
-          Electron
-        </div>
-        <div class="skill web">
-          Redux
-        </div>
-        <div class="skill tool">
-          Travis CI
-        </div>
-        <div class="skill web">
-          TDD
+      <h3 v-if="project.type !== 'center'">Skills Gained</h3>
+      <div class="skills" v-if="project.type !== 'center'">
+        <div
+          v-for="skill in project.skills"
+          v-bind:class="`skill ${skill.type}`"
+          v-bind:key="skill.name"
+        >
+          {{ skill.name }}
         </div>
       </div>
     </div>
-    <div class="right">
-      <img src="../assets/devrantron1.jpg" alt="" />
+    <div class="center" v-if="project.type === 'center'">
+      <img v-bind:src="project.center" alt=""></img>
     </div>
-  </div>
-  <div class="project aws">
-    <div class="description">
-      <h1>Amazon AWS Migration</h1>
-      <p>
-        Working with 7 different developers from 4 different continents on an open source application for a developer community website. We use ReactJS and Electron to build the cross platform application, using CI Pipelines we run test to make sure we are writing valid and quality code. I started the project initially and am currently managing it.
-      </p>
-    </div>
-    <div class="center">
-      <img src="../assets/AWSMigration.svg" alt="" />
-    </div>
-    <div class="description">
+    <div
+      class="description" v-if="project.type === 'center'"
+    >
       <h3>Skills Gained</h3>
       <div class="skills">
-        <div class="skill web">
-          AWS EC2
-        </div>
-        <div class="skill desktop">
-          Linux
-        </div>
-        <div class="skill web">
-          AWS S3
-        </div>
-        <div class="skill tool">
-          GitLab
+        <div
+          v-for="skill in project.skills"
+          v-bind:class="`skill ${skill.type}`"
+          v-bind:key="skill.name"
+        >
+          {{ skill.name }}
         </div>
       </div>
     </div>
-  </div>
-  <div class="project plookify">
-    <div class="left">
-      <img src="../assets/se.png" alt="" />
-    </div>
-    <div class="description">
-      <h1>Plookify</h1>
-      <p>I was part of a team with 5 collaborators inside it. Each team members had different modules to do and I was the account manager. We followed agile development methodologies to develop our program. It involved creating class diagram, database normalisation, code development and testing
-      </p>
-      <h3>Skills Gained</h3>
-      <div class="skills">
-        <div class="skill desktop">
-          Java
-        </div>
-        <div class="skill desktop">
-          JavaFX
-        </div>
-        <div class="skill tool">
-          Git
-        </div>
-        <div class="skill desktop">
-          SQL
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="project lluvium">
-    <div class="left">
-      <img src="../assets/Lluvium_large_2nd.jpg" alt="" />
-    </div>
-    <div class="description">
-      <h1>Lluvium</h1>
-      <p>
-        An application that shows the details about current weather and suggests music based on the weather condition. This was part of one of my university module. We had a group of 3 people. Our UX design was based on surveys and market research. Our app was created with Java and JavaFX.
-      </p>
-      <h3>Skills Gained</h3>
-      <div class="skills">
-        <div class="skill desktop">
-          Java
-        </div>
-        <div class="skill desktop">
-          JavaFX
-        </div>
-        <div class="skill desktop">
-          Design
-        </div>
-      </div>
-    </div>
-    <div class="right">
-      <img src="../assets/Lluvium_large_master.jpg" alt="" />
+    <div
+      class="right"
+      v-if="project.type === 'both' || project.type === 'right'"
+    >
+      <img v-bind:src="project.right" alt=""></img>
     </div>
   </div>
   <div class="project elearning">
@@ -228,17 +167,118 @@
 </template>
 
 <script>
+const TYPES = {
+  BOTH: 'both',
+  CENTER: 'center',
+  LEFT: 'left',
+  RIGHT: 'right',
+}
+
+const SKILL_TYPES = {
+  WEB: 'web',
+  DESKTOP: 'desktop',
+  TOOL: 'tool',
+}
+
+const SKILLS = {
+  REACTJS: {
+    name: 'ReactJS',
+    type: SKILL_TYPES.WEB,
+  },
+  ELECTRON: {
+    name: 'Electron',
+    type: SKILL_TYPES.DESKTOP,
+  },
+  REDUX: {
+    name: 'Redux',
+    type: SKILL_TYPES.WEB,
+  },
+  TRAVIS: {
+    name: 'Travis CI',
+    type: SKILL_TYPES.TOOL,
+  },
+  TDD: {
+    name: 'TDD',
+    type: SKILL_TYPES.WEB,
+  },
+}
 export default {
+  data() {
+    return {
+      devrantron: false,
+      projects: [
+        {
+          type: TYPES.BOTH,
+          name: 'devrantron',
+          title: 'devRantron',
+          description: 'Working with 7 different developers from 4 different continents on an open source application for a developer community website. We use ReactJS and Electron to build the cross platform application, using CI Pipelines we run test to make sure we are writing valid and quality code. I started the project initially and am currently managing it.',
+          left: '/devrantron2.jpg',
+          right: '/devrantron1.jpg',
+          skills: [
+            SKILLS.REACTJS,
+            SKILLS.ELECTRON,
+            SKILLS.REDUX,
+            SKILLS.TRAVIS,
+            SKILLS.TDD,
+          ]
+        },
+        {
+          type: TYPES.CENTER,
+          name: 'aws',
+          title: 'Amazon AWS Migration',
+          description: 'Working with 7 different developers from 4 different continents on an open source application for a developer community website. We use ReactJS and Electron to build the cross platform application, using CI Pipelines we run test to make sure we are writing valid and quality code. I started the project initially and am currently managing it.',
+          center: '/AWSMigration.svg',
+          skills: [
+            SKILLS.REACTJS,
+            SKILLS.ELECTRON,
+            SKILLS.REDUX,
+            SKILLS.TRAVIS,
+            SKILLS.TDD,
+          ]
+        },
+        {
+          type: TYPES.LEFT,
+          name: 'plookify',
+          title: 'Plookify',
+          description: 'Working with 7 different developers from 4 different continents on an open source application for a developer community website. We use ReactJS and Electron to build the cross platform application, using CI Pipelines we run test to make sure we are writing valid and quality code. I started the project initially and am currently managing it.',
+          left: '/se.png',
+          skills: [
+            SKILLS.REACTJS,
+            SKILLS.ELECTRON,
+            SKILLS.REDUX,
+            SKILLS.TRAVIS,
+            SKILLS.TDD,
+          ]
+        },
+        {
+          type: TYPES.BOTH,
+          name: 'lluvium',
+          title: 'Lluvium',
+          description: 'Working with 7 different developers from 4 different continents on an open source application for a developer community website. We use ReactJS and Electron to build the cross platform application, using CI Pipelines we run test to make sure we are writing valid and quality code. I started the project initially and am currently managing it.',
+          left: '/Lluvium_large_2nd.jpg',
+          right: '/Lluvium_large_master.jpg',
+          skills: [
+            SKILLS.REACTJS,
+            SKILLS.ELECTRON,
+            SKILLS.REDUX,
+            SKILLS.TRAVIS,
+            SKILLS.TDD,
+          ]
+        },
+      ]
+    }
+  },
   mounted() {
     const devRantron = document.getElementsByClassName("devrantron")[0];
-    window.addEventListener('scroll', () => this.isScrolledInView(devRantron), false);
   },
   destroyed() {
     const devRantron = document.getElementsByClassName("devrantron")[0];
-    window.removeEventListener('scroll', () => this.isScrolledInView(devRantron), false);
   },
   methods: {
-    isScrolledInView(element) {
+    scrolledInViewHandler(element) {
+
+    },
+    isVisible(element) {
       let rect = element.getBoundingClientRect();
 
       const scrolledInView = (

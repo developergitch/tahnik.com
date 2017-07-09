@@ -5,7 +5,7 @@
 </template>
 
 <style lang="scss">
-@import './assets/palette.scss';
+@import './assets/stylesheets/palette.scss';
 
 body {
   margin: 0 3px 0 0;

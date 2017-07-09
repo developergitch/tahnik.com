@@ -1,7 +1,7 @@
 <template>
-<div class="body_container">
+<div :class="`body_container${loading ? ' loading' : ''}`">
   <div class="front">
-    <div class="profile_card">
+    <div :class="`profile_card${this.loading ? ' loading' : ''}`">
       <div class="name">
         <span class="first">Tahnik</span>
         <span class="second">Mustasin</span>
@@ -28,7 +28,7 @@
       </div>
     </div>
   </div>
-  <profile-skills></profile-skills>
+  <profile-skills v-bind:loading="this.loading" ></profile-skills>
 </div>
 </template>
 
@@ -57,7 +57,8 @@ export default {
           URL: "https://twitter.com/mstahnik",
           icon: "ion-social-twitter",
         },
-      ]
+      ],
+      loading: true,
     }
   },
   mounted() {
@@ -73,6 +74,9 @@ export default {
       fadeOut: true,
       startDelay: 1500,
     });
+    setTimeout(() => {
+      this.loading = false;
+    }, 4000)
   },
   methods: {
     openLink(url) {
@@ -83,9 +87,12 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../assets/palette.scss';
+@import '../assets/stylesheets/palette.scss';
 @import url('https://fonts.googleapis.com/css?family=Heebo|Quicksand:300,400,700');
 .body_container {
+  &.loading {
+    margin-right: 10px;
+  }
   .front {
     display: flex;
     justify-content: center;
@@ -97,19 +104,53 @@ export default {
       justify-content: center;
       align-items: center;
       flex: 1;
-      .picture {
-        flex: 1;
-        position: relative;
-        img {
-          display: block;
-          width: 20rem;
-          max-width: 300px;
-          @media screen and (max-width: 480px) {
-            width: 400px;
+      &.loading {
+        .summary {
+          opacity: 0;
+        }
+        .line {
+          @-webkit-keyframes loading {
+            0% {
+              transform: translateX(-150px);
+            }
+            50% {
+              transform: translateX(150px);
+            }
+            100% {
+              transform: translateX(-150px);
+            }
           }
-          height: auto;
-          margin: 0 auto;
-          border-radius: 100%;
+          @keyframes loading {
+            0% {
+              transform: translateX(-150px);
+            }
+            50% {
+              transform: translateX(150px);
+            }
+            100% {
+              transform: translateX(-150px);
+            }
+          }
+          animation: loading 1s infinite;
+        }
+        .name {
+          .first {
+            opacity: 0;
+            transform: translateY(-1rem);
+          }
+          .second {
+            opacity: 0;
+            transform: translateX(1rem);
+          }
+        }
+        .role {
+
+        }
+        .social {
+          opacity: 0;
+          .link {
+
+          }
         }
       }
       .summary {
@@ -120,9 +161,7 @@ export default {
         text-align: center;
         margin-bottom: 1rem;
         font-family: 'Heebo', sans-serif;
-        @media screen and (max-width: 480px) {
-          font-size: 2rem;
-        }
+        transition: all 0.8s;
       }
       .line {
         height: 3px;
@@ -138,13 +177,16 @@ export default {
         padding: 1rem 0;
         display: flex;
         justify-content: center;
+        transition: all 0.8s;
         .first {
           font-size: 5rem;
           font-weight: 700;
+          transition: all 0.8s;
         }
         .second {
           font-size: 5rem;
           font-weight: 300;
+          transition: all 0.8s;
         }
       }
       .role {
@@ -156,6 +198,8 @@ export default {
       .social {
         max-width: 80rem;
         display: flex;
+        transition: all 0.8s;
+        transition-delay: 0.5s;
         .link {
           padding: 0.7rem;
           border: 2px solid $color3;

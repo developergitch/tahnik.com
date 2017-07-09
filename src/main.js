@@ -3,7 +3,9 @@ import App from './App.vue';
 import router from './routes';
 import './assets/stylesheets/ionicons.min.css';
 
-new Vue({
+const vm = new Vue({
   router,
   render: h => h(App)
 }).$mount('#app')
+
+console.log(vm.$el)

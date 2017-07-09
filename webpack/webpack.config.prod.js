@@ -2,6 +2,9 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin');
 
 module.exports = {
   devtool: '#source-map',
@@ -21,7 +24,17 @@ module.exports = {
         loader: 'vue-loader',
         options: {
           loaders: {
-            'scss': 'vue-style-loader!css-loader!sass-loader',
+            scss: ExtractTextPlugin.extract({
+              fallback: 'style-loader',
+              use: [{
+                loader: 'css-loader',
+                options: {
+                  minimize: true,
+                },
+              }, {
+                loader: 'sass-loader',
+              }],
+            }),
           }
         }
       },
@@ -32,13 +45,15 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [{
-            loader: 'style-loader',
-          },
-          {
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [{
             loader: 'css-loader',
-          },
-        ],
+            options: {
+              minimize: true,
+            },
+          }],
+        }),
       },
       {
         test: /\.(png|jpg|gif|svg|woff|eot|ttf)$/,
@@ -85,7 +100,17 @@ module.exports = {
         sortClassName: true,
         useShortDoctype: true,
       },
-
     }),
+    new ExtractTextPlugin({
+      filename: 'css/main.css',
+    }),
+    new StyleExtHtmlWebpackPlugin(),
+    new ScriptExtHtmlWebpackPlugin({
+      defaultAttribute: 'async',
+    }),
+    new CopyWebpackPlugin([{
+      from: path.join(__dirname, '../src/assets'),
+      to: path.join(__dirname, '../public/assets'),
+    }]),
   ]
 }

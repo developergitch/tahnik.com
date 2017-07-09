@@ -88,7 +88,7 @@ export default {
 
 <style lang="scss">
 @import '../assets/stylesheets/palette.scss';
-@import url('https://fonts.googleapis.com/css?family=Heebo|Quicksand:300,400,700');
+@import '../assets/stylesheets/fonts.css';
 .body_container {
   &.loading {
     margin-right: 10px;

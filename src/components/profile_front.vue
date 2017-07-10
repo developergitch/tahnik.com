@@ -92,15 +92,15 @@ export default {
 .body_container {
   &.loading {
     margin-right: 10px;
+    @media (max-width:480px)  {
+      margin-right: 0;
+    }
   }
   .front {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    @media (max-width:480px)  {
-      // height: auto;
-    }
     .profile_card {
       display: flex;
       flex-direction: column;
@@ -108,6 +108,7 @@ export default {
       align-items: center;
       flex: 1;
       &.loading {
+        overflow: hidden;
         .summary {
           opacity: 0;
         }

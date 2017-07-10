@@ -187,6 +187,9 @@ const SKILLS = {
     type: SKILL_TYPES.WEB,
   },
 }
+
+const isMobile = window.matchMedia( "(max-width: 480px)" ).matches;
+
 export default {
   props: ['loading'],
   data() {
@@ -366,8 +369,10 @@ export default {
     isVisible(element) {
       let rect = element.getBoundingClientRect();
 
+      const divideBy = isMobile ? 2 : 1.5;
+
       const scrolledInView = (
-        rect.top <= ((window.innerHeight || document.documentElement.clientHeight) / 1.5)
+        rect.top <= ((window.innerHeight || document.documentElement.clientHeight) / divideBy)
       );
       return scrolledInView;
     }
@@ -388,6 +393,9 @@ export default {
       justify-content: center;
       font-size: 3rem;
       font-family: 'Quicksand', sans-serif;
+      @media (max-width:480px)  {
+        text-align: center;
+      }
       &.work {
         margin-top: 10rem;
       }
@@ -399,6 +407,9 @@ export default {
       margin-bottom: 50px;
       margin-top: 20px;
       width: 40rem;
+      @media (max-width:480px)  {
+        width: 15rem;
+      }
     }
     h1 {
       font-size: 3rem;
@@ -409,6 +420,7 @@ export default {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
+      width: 100%;
       .item {
         display: flex;
         flex: 0 1 100%;
@@ -416,6 +428,7 @@ export default {
         overflow-x: hidden;
         padding-top: 5rem;
         padding-bottom: 3rem;
+        flex-wrap: wrap;
         &.both, &.center {
           h1 {
             text-align: center;
@@ -440,7 +453,7 @@ export default {
             img {
               display: block;
               margin: 0 auto;
-              width: 60rem;
+              max-width: 60rem;
             }
           }
         }
@@ -562,6 +575,65 @@ export default {
           flex: 2;
           z-index: 99;
           transition: all 0.4s;
+        }
+        @media (max-width:480px)  {
+          flex-direction: column;
+          align-items: center;
+          img {
+            border-radius: 0;
+          }
+          .description {
+            padding: 0;
+            h1 {
+              font-size: 2rem;
+            }
+            h5 {
+              font-size: 0.7rem;
+            }
+          }
+          .left {
+          }
+          .right {
+          }
+          &.left {
+            padding: 0;
+            .description {
+              margin-top: 2rem;
+              h1 {
+                text-align: center;
+              }
+              h5 {
+                text-align: center;
+              }
+              p {
+                text-align: center;
+              }
+            }
+          }
+          &.shared {
+            flex: 0 1 100%;
+            .description {
+              h1 {
+                text-align: center;
+              }
+              h5 {
+                text-align: center;
+              }
+              p {
+                text-align: center;
+              }
+            }
+          }
+          &.both {
+            .left {
+              margin-left: 0;
+              margin-bottom: 2rem;
+            }
+            .right {
+              margin-right: 0;
+              margin-top: 2rem;
+            }
+          }
         }
       }
       .devrantron {

@@ -9,6 +9,9 @@
 
 body {
   margin: 0 3px 0 0;
+  @media (max-width:480px)  {
+    margin: 0;
+  }
   padding: 0;
   background-color: $color4;
   .app {

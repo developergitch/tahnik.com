@@ -76,7 +76,7 @@ export default {
     });
     setTimeout(() => {
       this.loading = false;
-    }, 4000)
+    }, 1000)
   },
   methods: {
     openLink(url) {
@@ -98,6 +98,9 @@ export default {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    @media (max-width:480px)  {
+      // height: auto;
+    }
     .profile_card {
       display: flex;
       flex-direction: column;
@@ -157,6 +160,13 @@ export default {
         flex: 1;
         color: $color1;
         max-width: 50rem;
+        @media (max-width:480px)  {
+          max-width: 100vw;
+          p {
+            padding: 1rem;
+            font-size: 0.9rem;
+          }
+        }
         font-size: 1.1rem;
         text-align: center;
         margin-bottom: 1rem;
@@ -169,6 +179,9 @@ export default {
         background-color: $color1;
         margin-bottom: 20px;
         width: 30rem;
+        @media (max-width:480px)  {
+          width: 15rem;
+        }
       }
       .name {
         flex: 1;
@@ -178,13 +191,18 @@ export default {
         display: flex;
         justify-content: center;
         transition: all 0.8s;
+        font-size: 5rem;
+        @media (max-width:480px)  {
+          font-size: 3rem;
+        }
+        @media (max-width:320px)  {
+          font-size: 2.5rem;
+        }
         .first {
-          font-size: 5rem;
           font-weight: 700;
           transition: all 0.8s;
         }
         .second {
-          font-size: 5rem;
           font-weight: 300;
           transition: all 0.8s;
         }
@@ -194,6 +212,9 @@ export default {
         margin: 0 0 1.2rem 0;
         font-family: 'Quicksand', sans-serif;
         font-size: 2rem;
+        @media (max-width:480px)  {
+          font-size: 1rem;
+        }
       }
       .social {
         max-width: 80rem;
@@ -204,14 +225,18 @@ export default {
           padding: 0.7rem;
           border: 2px solid $color3;
           font-size: 1.2rem;
-          @media screen and (max-width: 480px) {
-            font-size: 2.5rem;
+          @media (max-width:480px)  {
+            font-size: 1rem;
+            margin: 0 0.5rem;
+          }
+          @media (max-width:320px)  {
+            font-size: 0.8rem;
           }
           border-radius: 5px;
           color: $color3;
           opacity: 0.4;
           transition: 0.4s all;
-          margin-right: 1rem;
+          margin: 0 1rem;
           font-family: 'Quicksand', sans-serif;
           &:hover {
             opacity: 1;

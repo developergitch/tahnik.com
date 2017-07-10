@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import App from './App.vue';
 import router from './routes';
-import './assets/stylesheets/ionicons.min.css';
+import './assets/stylesheets/ionicons.css';
 
 const vm = new Vue({
   router,

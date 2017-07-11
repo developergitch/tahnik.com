@@ -17,7 +17,8 @@
       </div>
       <div class="social">
         <div
-          v-for="link in links"
+          v-for="(link, index) in links"
+          v-if="index < 3"
           v-bind:key="link.name"
           class="link"
           @click="openLink(link.URL)"
@@ -29,6 +30,15 @@
     </div>
   </div>
   <profile-skills v-bind:loading="this.loading" ></profile-skills>
+  <div class="footer">
+    <h4>Connect with me</h4>
+    <div class="line"></div>
+    <div class="socials">
+      <div class="social" v-for="link in links" v-bind:key="link.name" v-on:click="openLink(link.URL)">
+        <i v-bind:class="link.icon"></i>
+      </div>
+    </div>
+  </div>
 </div>
 </template>
 
@@ -57,6 +67,21 @@ export default {
           URL: "https://twitter.com/mstahnik",
           icon: "ion-social-twitter",
         },
+        {
+          name: "Facebook",
+          URL: "https://www.facebook.com/Tahnik",
+          icon: "ion-social-facebook",
+        },
+        {
+          name: "devRant",
+          URL: "https://www.devrant.io/users/tahnik",
+          icon: "ion-android-chat",
+        },
+        {
+          name: "Steam",
+          URL: "tahnik@live.co.uk",
+          icon: "ion-email",
+        },
       ],
       loading: true,
     }
@@ -80,6 +105,10 @@ export default {
   },
   methods: {
     openLink(url) {
+      if (url === 'tahnik@live.co.uk') {
+        window.location.href = "mailto:tahnik@live.co.uk";
+        return;
+      }
       window.open(url, '_blank');
     }
   }
@@ -244,6 +273,44 @@ export default {
             cursor: pointer;
           }
         }
+      }
+    }
+  }
+  .footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Quicksand', sans-serif;
+    margin-bottom: 5rem;
+    h4 {
+      font-size: 3rem;
+      font-weight: 300;
+      margin-bottom: 1rem;
+      color: gray;
+      text-align: center;
+      @media (max-width:480px)  {
+        font-size: 2rem;
+      }
+    }
+    .line {
+      height: 3px;
+      border-radius: 10px;
+      background-color: $color1;
+      margin-bottom: 15px;
+      width: 40rem;
+      @media (max-width:480px)  {
+        width: 15rem;
+      }
+    }
+    .socials {
+      display: flex;
+      @media (max-width:480px)  {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .social {
+        margin: 0 1rem;
+        font-size: 3rem;
       }
     }
   }

@@ -26,7 +26,7 @@
           <h1>{{ item.title }}<i class="ion-android-open" v-if="item.url" v-on:click="openLink(item.url)"></i></h1>
           <h5 v-if="item.subtitle">{{ item.subtitle }}</h5>
           <p>{{ item.description }}</p>
-          <h3 v-if="item.type !== 'center'">Skills Gained</h3>
+          <h3 v-if="item.type !== 'center' && item.skills">Skills Gained</h3>
           <div class="skills" v-if="item.type !== 'center'">
             <div
               v-for="skill in item.skills"
@@ -45,8 +45,8 @@
         <div
           class="description" v-if="item.type === 'center'"
         >
-          <h3>Skills Gained</h3>
-          <div class="skills">
+          <h3 v-if="item.skills">Skills Gained</h3>
+          <div v-if="item.skills" class="skills">
             <div
               v-for="skill in item.skills"
               v-bind:class="`skill ${skill.type}`"
@@ -329,6 +329,32 @@ export default {
         },
         {
           header: {
+            title: 'Interests',
+            name: 'interests'
+          },
+          items: [
+            {
+              type: TYPES.CENTER,
+              visible: false,
+              name: 'webdev',
+              title: 'Full-Stack Web Development',
+              subtitle: '',
+              description: 'Although not part of my Job, I love web development as part of my hobby. I learn it purely for fun. I have in depth knowledge about ReactJS, VueJS, ES6, Flux Architecture, NodeJS, ExpressJS, MySQL, Firebase and PHP Laravel, Babel, Webpack, Gulp. I also have very good control over Linux. So I also know about web servers, apache, nginx. I maintain my own server in AWS using Ubuntu server.',
+              center: [ '', '/assets/images/webdev.png', '' ],
+            },
+            {
+              type: TYPES.CENTER,
+              visible: false,
+              name: 'cloud',
+              title: 'Cloud Platforms',
+              subtitle: '',
+              description: 'I have been tinkering with various cloud platforms for a while now. I have attended several workshops and events held my Google, Amazon and Microsoft where I learned about different types of cloud infrastructures and how each of them achieves a very important goal. I would love to know more about these in future.',
+              center: [ '', '/assets/images/cloud.png', '' ],
+            },
+          ]
+        },
+        {
+          header: {
             title: 'Work Experiences',
             name: 'work'
           },
@@ -438,7 +464,7 @@ export default {
         text-align: center;
       }
       &.work {
-        margin-top: 10rem;
+        margin-top: 5rem;
       }
     }
     .line {
@@ -578,6 +604,7 @@ export default {
               margin-left: 0.5rem;
               opacity: 0.2;
               transition: opacity 0.3s;
+              font-size: 1.5rem;
               &:hover {
                 opacity: 1;
                 cursor: pointer;
@@ -706,12 +733,20 @@ export default {
       .devrantron {
       }
       .aws {
-        .center {
-          .images:nth-child(1) {
-            display: none;
-          }
-          .images:nth-child(3) {
-            display: none;
+        &.center {
+          .center {
+            .images {
+              min-width: 80%;
+              @media (max-width:480px)  {
+                min-width: 100%;
+              }
+            }
+            .images:nth-child(1) {
+              display: none;
+            }
+            .images:nth-child(3) {
+              display: none;
+            }
           }
         }
       }
@@ -736,6 +771,32 @@ export default {
       .ccg {
         h1 {
           margin-bottom: 1rem;
+        }
+      }
+      .cloud {
+        &.center {
+          .center {
+            img {
+              box-shadow: none;
+            }
+            .images {
+              flex: 0;
+              min-width: 100%;
+            }
+          }
+        }
+      }
+      .webdev {
+        &.center {
+          .center {
+            img {
+              box-shadow: none;
+            }
+            .images {
+              flex: 0;
+              min-width: 100%;
+            }
+          }
         }
       }
       .lluvium {

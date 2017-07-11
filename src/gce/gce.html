@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SmartGuard</title>
+    <link href="https://firebasestorage.googleapis.com/v0/b/vita-fe12c.appspot.com/o/favicon.ico?alt=media&token=d05314cd-9e6d-46a6-92b9-5017a4eb332d" rel=icon>
+    <meta name="theme-color" content="#000">
+    <meta name="description" content="Meet the future of cyber security">
+    <meta name="author" content="Tahnik Mustasin">
+    <meta name="keywords" content="vita, cyber, security, certification">
+    <!-- This tags are for facebook -->
+    <meta property="og:title" content="Vita">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/vita-fe12c.appspot.com/o/CaptureCyber.PNG?alt=media&token=369371fc-b3d2-4eb3-a827-d7cfdc144620">
+    <meta property="og:url" content="https://vita-fe12c.firebaseapp.com/">
+    <meta property="og:description" content="Meet the future of cyber security">
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <style>
+      /* hebrew */
+      @font-face {
+        font-family: 'Assistant';
+        font-style: normal;
+        font-weight: 200;
+        src: local('Assistant ExtraLight'), local('Assistant-ExtraLight'), url(https://fonts.gstatic.com/s/assistant/v1/xXstfiHQzjB9j5ZxYTBoZ0Byb1TKJa77egybnpn19yM.woff2) format('woff2');
+        unicode-range: U+0590-05FF, U+20AA, U+25CC, U+FB1D-FB4F;
+      }
+      /* latin */
+      @font-face {
+        font-family: 'Assistant';
+        font-style: normal;
+        font-weight: 200;
+        src: local('Assistant ExtraLight'), local('Assistant-ExtraLight'), url(https://fonts.gstatic.com/s/assistant/v1/xXstfiHQzjB9j5ZxYTBoZ-gdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+      }
+      @media (max-width: 500px) {
+        .front_page > h1 {
+          font-size: 3rem;
+          right: 0;
+        }
+        video#bgvid {
+          margin-left: -20vh;
+        }
+        video#bgvid {
+          position: absolute;
+          left: -40%;
+          height: 100%;
+          z-index: -100;
+        }
+        .smartguard {
+          padding: 1rem 2rem 4rem 2rem !important;
+        }
+        #about_us > div > img {
+          padding: 2rem 5rem 0 5rem;
+        }
+      }
+
+      @media (min-width: 500px) {
+        .front_page > h1 {
+          font-size: 6.5rem;
+          right: 5rem;
+        }
+        video#bgvid {
+          margin-left: 0;
+        }
+        video#bgvid {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          min-width: 100%;
+          min-height: 100%;
+          width: auto;
+          height: auto;
+          z-index: -100;
+          transform: translateX(-50%) translateY(-50%);
+        }
+        .smartguard {
+          padding: 1rem 0 4rem 0 !important;
+        }
+      }
+      body {
+      }
+      .front_page {
+        height: 100vh;
+        width: 100%;
+      }
+      .col-sm-4 {
+        padding: 0;
+      }
+      .back_video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: black;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        z-index: -9;
+      }
+      .front_page > h1 {
+        color: white;
+        font-family: 'Assistant', sans-serif;
+        position: absolute;
+      }
+      h3, h2, h5 {
+        font-family: 'Assistant', sans-serif;
+      }
+
+      h5 {
+        font-weight: 600;
+      }
+      
+      nav {
+        padding: 0 1rem;
+        background-color: black;
+      }
+      .nav-wrapper > a {
+        font-family: 'Assistant', sans-serif;
+      }
+      #about_us > div > p {
+        font-weight: 300;
+      }
+      span, i {
+        font-size: 2rem;
+        font-family: 'Assistant', sans-serif;
+        font-weight: 600;
+        line-height: 2rem;
+      }
+    </style>
+  </head>
+  <body style="margin: 0">
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#!" class="brand-logo">// SmartGuard .</a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="#solution">Our Solution</a></li>
+            <li><a href="#about_us">About Us</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="front_page">
+      <div class="back_video">
+        <video playsinline autoplay muted loop id="bgvid">
+            <source src="./resources/hack.MP4" type="video/mp4">
+        </video>
+      </div>
+      <!--<div class="back_layer"></div>-->
+      <h1>
+        /* You are being <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;watched. */
+      </h1>
+    </div>
+    <div class="row second_page">
+      <div class="col s12 m8 offset-m2" style="margin-bottom: 0rem;">
+        <h2 style="text-align: center; margin-bottom: 3rem;">How can we make IoT home appliances more trustworthy?</h2>
+       <div class="col s6 offset-s3" style="height: 3px; background-color: black;"></div>
+      </div>
+      <div class="col s12 second_back_image" style="padding: 0">
+        <img
+        src="./resources/security.png"
+        style="width: 100%;"
+         />
+      </div>
+    </div>
+    <div class="row third_page">
+      <div class="col s12 m12" style="text-align: center; padding-bottom: 2rem">
+        <h2>IoT Devices On Rise</h2>
+        <h5><i>But how secure are they?</i></h5>
+      </div>
+      <div class="col s12 m6" style="padding-top: 1rem">
+        <img src="./resources/RiseOfIoT.png" style="width: 100%" />
+      </div>
+      <div class="col s12 m6">
+        <img src="./resources/InsecureIoT.png" style="width: 100%" />
+      </div>
+    </div>
+    <div class="row fourth_page" id="solution">
+      <div class="col s12 m12" style="text-align: center; padding-bottom: 2rem">
+        <h2>Meet SmartGuard</h2>
+      </div>
+      <div class="col s12 m4 l4 offset-m4 offset-l4 smartguard">
+        <img src="./resources/SmartGuardLogo.png" style="width: 100%" />
+      </div>
+      <div class="col s12 m8 offset-m2" style="padding-top: 1rem">
+        <i class="ion-android-globe"></i>&nbsp;
+        <span>Global standard for certifying IoT home device security</span>
+        <p>Currently, there isn't any global consensus regarding device security standards. Even national regulations tend to only cover devices to be used by the government and not the consumer. Our solution helps to set up security standards that would be comprehensive and recognised all around the world.</p>
+      </div>
+      <div class="col s12 m8 offset-m2" style="padding-top: 1rem">
+        <i class="ion-android-cloud-done"></i>&nbsp;
+        <span>Increased Baseline Security</span>
+        <p>Device makers aren't prioritising security. Plenty of common exploits that are being used by hackers can be easily prevented. We want all devices to address these vulnerabilities as a bare minimum to having a secure device.</p>
+      </div>
+      <div class="col s12 m8 offset-m2" style="padding-top: 1rem">
+        <i class="ion-android-contacts"></i>&nbsp;
+        <span>Generate Public Awareness</span>
+        <p>Consumers aren't conscious about security while looking to purchase IoT devices. Our branding helps them identify secure devices, aiding them in their decision while purchasing. This also encourages customers to give more thought to security and understand more about the risks posed by vulnerable devices.</p>
+      </div>
+    </div>
+    <div class="row fifth_page">
+      <div class="col s12 m12" style="text-align: center; padding-bottom: 2rem">
+        <h2>FAQ</h2>
+      </div>
+      <div class="col s12 m8 offset-m2" style="padding-top: 1rem">
+        <h5>How does it work?</h5>
+        <p>Each time a device manufacturer releases a new device, they will send the device to us to verify the security of the device. we will perform security tests against all currently known exploits. The list of these will be expanded as we discover more vulnerabilities. For instance, we could try to use default usernames and passwords to gain access to the device. <br>
+          Once the device demonstrates that it adequately addresses these vulnerabilities, we will certify the device as secured using our brand symbol. Otherwise, the device will be returned to the manufacturer and will be retested once they have addressed the issue.
+
+        </p>
+      </div>
+      <div class="col s12 m8 offset-m2" style="padding-top: 1rem">
+        <h5>Don’t governments already have policy in place addressing the same issue?</h5>
+        <p>Governments have policies for their internal devices only. So general people does not have a global authority to trust on.</p>
+      </div>
+      <div class="col s12 m8 offset-m2" style="padding-top: 1rem">
+        <h5>How does our solution help countries generate social and economic data which may help them measure their progress towards SDG(s)?</h5>
+        <p>The number of certificates granted can be used as a metric for the number of relatively secure devices per country. This can produce a loose measure of progress in IoT cyber security, globally.</p>
+      </div>
+      <div class="col s12 m8 offset-m2" style="padding-top: 1rem">
+        <h5>How can we build our threat model? Does an open source DB of threats already exist which we can leverage?</h5>
+        <p>Yes, US Goverment keeps a list of known vulnerabilities at <a href="https://nvd.nist.gov/">https://nvd.nist.gov/</a>. We can take them as our initial list and over time we can enrich our list using our security experts.</p>
+      </div>
+      <div class="col s12 m8 offset-m2" style="padding-top: 1rem">
+        <h5>Why would the companies come to us instead of doing the tests themselves?</h5>
+        <p>Most of the company claims that their devices is secure but they get hacked over time because of simple mistakes. So even though they ask everyone to trust them, it still does not prove their strength in security. So if there is a global authority verifying the security of their devices, it will be easier for them to detech these easy mistakes before it goes to the market. Most of the small or medium company does not run security tests on their devices as general people prioratises features over security. But because of the recent hack, a lot of companies has lost of a big chunk of revenue. So they will be happy if a certified authority is verifying the security.</p>
+      </div>
+    </div>
+    <div class="row sixth_page" id="about_us">
+      <div class="col s12 m12" style="text-align: center; padding-bottom: 2rem">
+        <h2>About Us</h2>
+      </div>
+      <div class="col s12 m2 offset-m1" style="padding-top: 1rem">
+        <img src="./resources/Jayant.jpg" width="100%">
+        <h5 style="text-align: center">Jayant<br>Shivarajan</h5>
+        <p style="text-align: center">BEng Computer Systems Engineering</p>
+      </div>
+      <div class="col s12 m2" style="padding-top: 1rem">
+        <img src="./resources/tahnik.jpg" width="100%">
+        <h5 style="text-align: center">Tahnik<br>Mustasin</h5>
+        <p style="text-align: center">BEng Computer Systems Engineering</p>
+      </div>
+      <div class="col s12 m2" style="padding-top: 1rem">
+        <img src="./resources/Kristina.jpg" width="100%">
+        <h5 style="text-align: center">Kristina<br>Semenyuk</h5>
+        <p style="text-align: center">MSci Computer Science</p>
+      </div>
+      <div class="col s12 m2" style="padding-top: 1rem">
+        <img src="./resources/sameen.jpg" width="100%">
+        <h5 style="text-align: center">Sameen<br>Islam</h5>
+        <p style="text-align: center">BSc Computer Science</p>
+      </div>
+      <div class="col s12 m2" style="padding-top: 1rem">
+        <img src="./resources/okeke.jpg" width="100%">
+        <h5 style="text-align: center">Nnadozie<br>Okeke</h5>
+        <p style="text-align: center">BEng Electrical and Electronic Engineering</p>
+      </div>
+    </div>
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+  </body>
+</html>

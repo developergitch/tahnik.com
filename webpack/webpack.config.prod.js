@@ -108,9 +108,19 @@ module.exports = {
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: 'async',
     }),
-    new CopyWebpackPlugin([{
-      from: path.join(__dirname, '../src/assets'),
-      to: path.join(__dirname, '../public/assets'),
-    }]),
+    new CopyWebpackPlugin([
+      {
+        from: path.join(__dirname, '../src/assets'),
+        to: path.join(__dirname, '../public/assets'),
+      },
+      {
+        from: path.join(__dirname, '../src/gce/resources'),
+        to: path.join(__dirname, '../public/resources'),
+      },
+      {
+        from: path.join(__dirname, '../src/gce/gce.html'),
+        to: path.join(__dirname, '../public'),
+      }
+    ]),
   ]
 }

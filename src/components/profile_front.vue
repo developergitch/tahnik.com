@@ -2,6 +2,9 @@
 <div :class="`body_container${loading ? ' loading' : ''}`">
   <div class="front">
     <div :class="`profile_card${this.loading ? ' loading' : ''}`">
+      <div class="fork" v-on:click="openLink('https://github.com/tahnik/tahnik.com')">
+        <i class="ion-fork-repo"></i>&nbsp;Fork this website
+      </div>
       <div class="name">
         <span class="first">Tahnik</span>
         <span class="second">Mustasin</span>
@@ -30,7 +33,7 @@
     </div>
   </div>
   <profile-skills v-bind:loading="this.loading" ></profile-skills>
-  <div class="footer">
+  <div class="footer" v-if="!loading">
     <h4>Connect with me</h4>
     <div class="line"></div>
     <div class="socials">
@@ -136,8 +139,27 @@ export default {
       justify-content: center;
       align-items: center;
       flex: 1;
+      .fork {
+        position: absolute;
+        opacity: 0.4;
+        top: 10px;
+        right: 10px;
+        font-size: 1rem;
+        font-family: 'Quicksand', sans-serif;
+        transition: opacity 0.4s;
+        &:hover {
+          cursor: pointer;
+          opacity: 1;
+        }
+        @media (max-width:320px)  {
+          display: none;
+        }
+      }
       &.loading {
         overflow: hidden;
+        .fork {
+          opacity: 0;
+        }
         .summary {
           opacity: 0;
         }

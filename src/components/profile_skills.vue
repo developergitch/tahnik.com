@@ -23,7 +23,7 @@
         <div
           class="description"
         >
-          <h1>{{ item.title }}</h1>
+          <h1>{{ item.title }}<i class="ion-android-open" v-if="item.url" v-on:click="openLink(item.url)"></i></h1>
           <h5 v-if="item.subtitle">{{ item.subtitle }}</h5>
           <p>{{ item.description }}</p>
           <h3 v-if="item.type !== 'center'">Skills Gained</h3>
@@ -38,7 +38,9 @@
           </div>
         </div>
         <div class="center" v-if="item.type === 'center'">
-          <img v-bind:src="item.center" alt=""></img>
+          <div class="images" v-for="image in item.center" v-bind:key="image">
+            <img v-bind:src="image" alt=""></img>
+          </div>
         </div>
         <div
           class="description" v-if="item.type === 'center'"
@@ -186,6 +188,14 @@ const SKILLS = {
     name: 'Web Development',
     type: SKILL_TYPES.WEB,
   },
+  PRESENTATION: {
+    name: 'Presentation',
+    type: SKILL_TYPES.DESKTOP,
+  },
+  RESEARCH: {
+    name: 'Research',
+    type: SKILL_TYPES.DESKTOP,
+  },
 }
 
 const isMobile = window.matchMedia( "(max-width: 480px)" ).matches;
@@ -208,6 +218,7 @@ export default {
               name: 'devrantron',
               title: 'devRantron',
               subtitle: 'Open Source',
+              url: 'https://github.com/tahnik/devRantron',
               description: 'Working with 7 different developers from 4 different continents on an open source application for a developer community website. We use ReactJS and Electron to build the cross platform application, using CI Pipelines we run test to make sure we are writing valid and quality code. I started the project initially and am currently managing it.',
               left: '/assets/images/devrantron2.jpg',
               right: '/assets/images/devrantron1.jpg',
@@ -226,7 +237,11 @@ export default {
               title: 'Amazon AWS Migration',
               subtitle: 'Volunteering Experience',
               description: 'Helped a company to migrate their dedicated server to cloud instances. This helped them to save a enormous amount of money and scale up and down according to their needs. This required me to setup EC2 Instances, S3 Buckets, SMS and Email services, CloudFront and Route 53 services for their websites. I volunteered to do this work to gather commercial experience of cloud infrastructure.',
-              center: '/assets/images/AWSMigration.svg',
+              center: [
+                '',
+                '/assets/images/AWSMigration.svg',
+                ''
+              ],
               skills: [
                 SKILLS.AWS,
                 SKILLS.LINUX,
@@ -234,11 +249,30 @@ export default {
               ]
             },
             {
+              type: TYPES.CENTER,
+              visible: false,
+              name: 'gce',
+              title: 'Grand Engineering Challenge',
+              subtitle: 'Competition',
+              url: 'https://www.tahnik.com/gce',
+              description: 'Along with 4 other friends, we took part in the NAE Grand Challenges for Engineering competition. We made it to the top 18 teams in the United Kingdom. The topic we chose was Cyber Security. Currently, there isn\'t any global consensus regarding device security standards. Our solution helps to set up security standards that would be comprehensive and recognised all around the world.',
+              center: [
+                '/assets/images/gce1.jpg',
+                '/assets/images/gce3.jpg',
+                '/assets/images/gce2.jpg',
+              ],
+              skills: [
+                SKILLS.WEBDEV,
+                SKILLS.PRESENTATION,
+                SKILLS.RESEARCH,
+              ]
+            },
+            {
               type: TYPES.LEFT,
               visible: false,
               name: 'plookify',
               title: 'Plookify',
-              subtitle: 'Open Source',
+              subtitle: 'University',
               description: 'I was part of a team with 5 collaborators inside it. Each team members had different modules to do and I was the account manager. We followed agile development methodologies to develop our program. It involved creating class diagram, database normalisation, code development and testing',
               left: '/assets/images/se.png',
               skills: [
@@ -253,7 +287,7 @@ export default {
               visible: false,
               name: 'lluvium',
               title: 'Lluvium',
-              subtitle: 'Open Source',
+              subtitle: 'University',
               description: 'An application that shows the details about current weather and suggests music based on the weather condition. This was part of one of my university module. We had a group of 3 people. Our UX design was based on surveys and market research. Our app was created with Java and JavaFX.',
               left: '/assets/images/Lluvium_large_2nd.jpg',
               right: '/assets/images/Lluvium_large_master.jpg',
@@ -269,6 +303,7 @@ export default {
               name: 'elearning',
               title: 'eLearning',
               subtitle: 'Chosen Care Group',
+              url: 'http://ecareacademy.com',
               description: 'I tested a LMS website for 6 months working with our web developer in Chosen Care Group. This included filing bugs to developer and verifying the fix. Once the website was finished I created eLearning content using Adobe Captivate',
               skills: [
                 SKILLS.WEBDEV,
@@ -282,6 +317,7 @@ export default {
               name: 'animated',
               title: 'Animated Video',
               subtitle: 'Speiuss Ltd.',
+              url: 'https://www.youtube.com/watch?v=0t2B7rZrlHs',
               description: 'Created multiple animated video using GoAnimate to describe things like payroll, induction day etc. Also I know video using Adobe premier which I used for green screen editing for training and marketing videos',
               skills: [
                 SKILLS.PREMIER,
@@ -303,8 +339,9 @@ export default {
               name: 'buhler',
               title: 'Software Engineer',
               subtitle: 'Buhler UK Limited',
+              url: 'http://www.buhlergroup.com/',
               description: 'Currently doing my internship in Buhler Sortex - provider of world\'s best in class food sorting machines. I am using C++ with Visual Studio for updating and debugging existing software. I am also using QT for building automatic testing software.',
-              center: '/assets/images/Buhler.png',
+              center: [ '', '/assets/images/Buhler.png', '' ],
               skills: [
                 SKILLS.CPP,
                 SKILLS.NODE,
@@ -319,6 +356,7 @@ export default {
               name: 'ccg',
               title: 'IT Consultant',
               subtitle: 'Chosen Care Group (Oct 2015 - Jun 2016)',
+              url: 'http://www.chosencaregroup.com',
               description: 'Helped the company to build their IT infrastructure from the scratch. Developer multiple brand by the use of Social media, Ads and Marketing. Developed their main website and tested multiple existing website they had.',
               skills: [
                 SKILLS.WINSERVER,
@@ -375,6 +413,9 @@ export default {
         rect.top <= ((window.innerHeight || document.documentElement.clientHeight) / divideBy)
       );
       return scrolledInView;
+    },
+    openLink(url) {
+      window.open(url, '_blank');
     }
   }
 }
@@ -450,10 +491,26 @@ export default {
           .center {
             width: 100%;
             padding: 1rem 0;
-            img {
-              display: block;
-              margin: 0 auto;
-              max-width: 60rem;
+            display: flex;
+            justify-content: center;
+            .images {
+              flex: 0 1 50%;
+              min-width: 50%;
+              margin: 0 1rem;
+              transition: transform 0.4s;
+              img {
+                width: 100%;
+              }
+            }
+            .images:nth-child(1) {
+              &:hover {
+                transform: translateX(60%);
+              }
+            }
+            .images:nth-child(3) {
+              &:hover {
+                transform: translateX(-60%);
+              }
             }
           }
         }
@@ -516,6 +573,16 @@ export default {
           }
           h1 {
             transition: all 0.4s;
+            i {
+              position: absolute;
+              margin-left: 0.5rem;
+              opacity: 0.2;
+              transition: opacity 0.3s;
+              &:hover {
+                opacity: 1;
+                cursor: pointer;
+              }
+            }
           }
           p {
             transition: all 0.4s;
@@ -639,10 +706,31 @@ export default {
       .devrantron {
       }
       .aws {
+        .center {
+          .images:nth-child(1) {
+            display: none;
+          }
+          .images:nth-child(3) {
+            display: none;
+          }
+        }
       }
       .buhler {
-        img {
-          box-shadow: none;
+        &.center {
+          .center {
+            img {
+              box-shadow: none;
+            }
+            .images {
+              min-width: 90%;
+            }
+            .images:nth-child(1) {
+              display: none;
+            }
+            .images:nth-child(3) {
+              display: none;
+            }
+          }
         }
       }
       .ccg {

@@ -76,11 +76,6 @@ export default {
           icon: "ion-social-facebook",
         },
         {
-          name: "devRant",
-          URL: "https://www.devrant.io/users/tahnik",
-          icon: "ion-android-chat",
-        },
-        {
           name: "Steam",
           URL: "tahnik@live.co.uk",
           icon: "ion-email",
@@ -333,6 +328,11 @@ export default {
       .social {
         margin: 0 1rem;
         font-size: 3rem;
+        transition: all 0.2s;
+        &:hover {
+          cursor: pointer;
+          transform: scale(1.2);
+        }
       }
     }
   }

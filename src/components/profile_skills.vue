@@ -84,6 +84,18 @@ const SKILL_TYPES = {
 }
 
 const SKILLS = {
+  COMPILERS: {
+    name: 'Compilers',
+    type: SKILL_TYPES.DESKTOP,
+  },
+  GRAPHQL: {
+    name: 'GraphQL',
+    type: SKILL_TYPES.WEB,
+  },
+  REASONML: {
+    name: 'ReasonML',
+    type: SKILL_TYPES.DESKTOP,
+  },
   REACTJS: {
     name: 'ReactJS',
     type: SKILL_TYPES.WEB,
@@ -212,6 +224,25 @@ export default {
             name: 'projects'
           },
           items: [
+            {
+              type: TYPES.CENTER,
+              visible: false,
+              name: 'graphql-reason',
+              title: 'GraphQL Optimization using ReasonML',
+              subtitle: 'University Project',
+              url: 'https://github.com/tahnik/graphql-reason',
+              description: "This project aims to optimize the execution of GraphQL, an API query language used by thousands of developers and millions of mobile, desktop and web applications. The end product of this project is a library, which can parse and validate GraphQL query and optimize them. It uses a relatively new language called ReasonML, which was created keeping performance in mind.",
+              center: [
+                '',
+                '/assets/images/graphql.PNG',
+                ''
+              ],
+              skills: [
+                SKILLS.GRAPHQL,
+                SKILLS.REASONML,
+                SKILLS.COMPILERS
+              ]
+            },
             {
               type: TYPES.BOTH,
               visible: false,
@@ -633,25 +664,12 @@ export default {
               transition: 0.2s all;
               font-size: 0.8rem;
               padding: 0 0.2rem;
+              background-color: $color5;
+              color: $color4;
               p {
                 text-align: center;
               }
-              &:hover {
-                cursor: pointer;
-                box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-              }
-            }
-            .web {
-              background-color: $color2;
-              color: $color4;
-            }
-            .tool {
-              background-color: $color3;
-              color: $color4;
-            }
-            .desktop {
-              background-color: $color5;
-              color: $color4;
+              border-radius: 5px;
             }
           }
         }

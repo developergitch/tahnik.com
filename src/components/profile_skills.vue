@@ -26,8 +26,10 @@
           <h1>{{ item.title }}<i class="ion-android-open" v-if="item.url" v-on:click="openLink(item.url)"></i></h1>
           <h5 v-if="item.subtitle">{{ item.subtitle }}</h5>
           <div class="des_container"><p>{{ item.description }}</p></div>
-          <h3 v-if="item.type !== 'center' && item.skills">Skills Gained</h3>
-          <div class="skills" v-if="item.type !== 'center'">
+          <h3
+            v-if="item.type !== 'center' && item.type !== 'shared' && item.skills"
+          >Skills Gained</h3>
+          <div class="skills" v-if="item.type !== 'center' && item.type !== 'shared'">
             <div
               v-for="skill in item.skills"
               v-bind:class="`skill ${skill.type}`"
@@ -37,13 +39,13 @@
             </div>
           </div>
         </div>
-        <div class="center" v-if="item.type === 'center'">
+        <div class="center" v-if="item.type === 'center' || item.type === 'shared'">
           <div class="images" v-for="image in item.center" v-bind:key="image">
             <img v-bind:src="image" alt=""></img>
           </div>
         </div>
         <div
-          class="description" v-if="item.type === 'center'"
+          class="description" v-if="item.type === 'center' || item.type === 'shared'"
         >
           <h3 v-if="item.skills">Skills Gained</h3>
           <div v-if="item.skills" class="skills">
@@ -70,7 +72,6 @@
 
 <script>
 const TYPES = {
-  BOTH: 'both',
   CENTER: 'center',
   LEFT: 'left',
   RIGHT: 'right',
@@ -227,32 +228,16 @@ export default {
             {
               type: TYPES.CENTER,
               visible: false,
-              name: 'graphql-reason',
-              title: 'GraphQL Optimization using ReasonML',
-              subtitle: 'University Project',
-              url: 'https://github.com/tahnik/graphql-reason',
-              description: "This project aims to optimize the execution of GraphQL, an API query language used by thousands of developers and millions of mobile, desktop and web applications. The end product of this project is a library, which can parse and validate GraphQL query and optimize them. It uses a relatively new language called ReasonML, which was created keeping performance in mind.",
-              center: [
-                '',
-                '/assets/images/graphql.png',
-                ''
-              ],
-              skills: [
-                SKILLS.GRAPHQL,
-                SKILLS.REASONML,
-                SKILLS.COMPILERS
-              ]
-            },
-            {
-              type: TYPES.BOTH,
-              visible: false,
               name: 'devrantron',
               title: 'devRantron',
               subtitle: 'Open Source',
               url: 'https://github.com/tahnik/devRantron',
               description: 'Working with 7 different developers from 4 different continents on an open source application for a developer community website. We use ReactJS and Electron to build the cross platform application, using CI Pipelines we run test to make sure we are writing valid and quality code. I started the project initially and am currently managing it.',
-              left: '/assets/images/devrantron2.jpg',
-              right: '/assets/images/devrantron1.jpg',
+              center: [
+                '/assets/images/devrantron2.png',
+                '/assets/images/devrantron1.png',
+                '/assets/images/devrantron3.png',
+              ],
               skills: [
                 SKILLS.REACTJS,
                 SKILLS.ELECTRON,
@@ -262,16 +247,31 @@ export default {
               ]
             },
             {
-              type: TYPES.CENTER,
+              type: TYPES.SHARED,
+              visible: false,
+              name: 'graphql-reason',
+              title: 'GraphQL Optimisation',
+              subtitle: 'University Project',
+              url: 'https://www.npmjs.com/package/graphqlx',
+              description: "This project aims to optimise the execution of GraphQL, an API query language used by thousands of developers and millions of mobile, desktop and web applications. The end product of this project is a library, which can parse and validate GraphQL query and optimise them. It uses a combination of OCaml and JavaScript language. Tools like Menhir, OCamllex and BuckleScript was used to build the project.",
+              center: [
+                '/assets/images/graphql.png',
+              ],
+              skills: [
+                SKILLS.GRAPHQL,
+                SKILLS.REASONML,
+                SKILLS.COMPILERS
+              ]
+            },
+            {
+              type: TYPES.SHARED,
               visible: false,
               name: 'aws',
               title: 'Amazon AWS Migration',
               subtitle: 'Volunteering Experience',
               description: 'Helped a company to migrate their dedicated server to cloud instances. This helped them to save a enormous amount of money and scale up and down according to their needs. This required me to setup EC2 Instances, S3 Buckets, SMS and Email services, CloudFront and Route 53 services for their websites. I volunteered to do this work to gather commercial experience of cloud infrastructure.',
               center: [
-                '',
-                '/assets/images/AWSMigration.svg',
-                ''
+                '/assets/images/aws.png',
               ],
               skills: [
                 SKILLS.AWS,
@@ -299,13 +299,13 @@ export default {
               ]
             },
             {
-              type: TYPES.LEFT,
+              type: TYPES.SHARED,
               visible: false,
               name: 'plookify',
               title: 'Plookify',
               subtitle: 'University',
               description: 'I was part of a team with 5 collaborators inside it. Each team members had different modules to do and I was the account manager. We followed agile development methodologies to develop our program. It involved creating class diagram, database normalisation, code development and testing',
-              left: '/assets/images/se.png',
+              center: [ '/assets/images/se.png' ],
               skills: [
                 SKILLS.JAVA,
                 SKILLS.JAVAFX,
@@ -314,14 +314,13 @@ export default {
               ]
             },
             {
-              type: TYPES.BOTH,
+              type: TYPES.SHARED,
               visible: false,
               name: 'lluvium',
               title: 'Lluvium',
               subtitle: 'University',
               description: 'An application that shows the details about current weather and suggests music based on the weather condition. This was part of one of my university module. We had a group of 3 people. Our UX design was based on surveys and market research. Our app was created with Java and JavaFX.',
-              left: '/assets/images/Lluvium_large_2nd.jpg',
-              right: '/assets/images/Lluvium_large_master.jpg',
+              center: [ '/assets/images/Lluvium_large_2nd.jpg.png' ],
               skills: [
                 SKILLS.JAVA,
                 SKILLS.JAVAFX,
@@ -360,32 +359,6 @@ export default {
         },
         {
           header: {
-            title: 'Interests',
-            name: 'interests'
-          },
-          items: [
-            {
-              type: TYPES.CENTER,
-              visible: false,
-              name: 'webdev',
-              title: 'Full-Stack Web Development',
-              subtitle: '',
-              description: 'Although not part of my Job, I love web development as part of my hobby. I learn it purely for fun. I have in depth knowledge about ReactJS, VueJS, ES6, Flux Architecture, NodeJS, ExpressJS, MySQL, Firebase and PHP Laravel, Babel, Webpack, Gulp. I also have very good control over Linux. So I also know about web servers, apache, nginx. I maintain my own server in AWS using Ubuntu server.',
-              center: [ '', '/assets/images/webdev.png', '' ],
-            },
-            {
-              type: TYPES.CENTER,
-              visible: false,
-              name: 'cloud',
-              title: 'Cloud Platforms',
-              subtitle: '',
-              description: 'I have been tinkering with various cloud platforms for a while now. I have attended several workshops and events held my Google, Amazon and Microsoft where I learned about different types of cloud infrastructures and how each of them achieves a very important goal. I would love to know more about these in future.',
-              center: [ '', '/assets/images/cloud.png', '' ],
-            },
-          ]
-        },
-        {
-          header: {
             title: 'Work Experiences',
             name: 'work'
           },
@@ -394,10 +367,10 @@ export default {
               type: TYPES.CENTER,
               visible: false,
               name: 'buhler',
-              title: 'Software Engineer',
+              title: 'Software Engineer (Intern)',
               subtitle: 'Buhler UK Limited',
               url: 'http://www.buhlergroup.com/',
-              description: 'Currently doing my internship in Buhler Sortex - provider of world\'s best in class food sorting machines. I am using C++ with Visual Studio for updating and debugging existing software. I am also using QT for building automatic testing software.',
+              description: 'I did my internship in Buhler Sortex - provider of world\'s best in class food sorting machines. I used C++ with Visual Studio for updating and debugging existing software. I also used QT for building automatic testing software.',
               center: [ '', '/assets/images/Buhler.png', '' ],
               skills: [
                 SKILLS.CPP,
@@ -434,6 +407,32 @@ export default {
                 SKILLS.PREMIER,
                 SKILLS.PHOTOSHOP
               ]
+            },
+          ]
+        },
+        {
+          header: {
+            title: 'Interests',
+            name: 'interests'
+          },
+          items: [
+            {
+              type: TYPES.SHARED,
+              visible: false,
+              name: 'webdev',
+              title: 'Web Development',
+              subtitle: '',
+              description: 'Although not part of my Job, I love web development as part of my hobby. I learn it purely for fun. I have in depth knowledge about ReactJS, VueJS, ES6, Flux Architecture, NodeJS, ExpressJS, MySQL, Firebase and PHP Laravel, Babel, Webpack, Gulp. I also have very good control over Linux. So I also know about web servers, apache, nginx. I maintain my own server in AWS.',
+              center: [ '/assets/images/webdev.png' ],
+            },
+            {
+              type: TYPES.SHARED,
+              visible: false,
+              name: 'cloud',
+              title: 'Cloud Platforms',
+              subtitle: '',
+              description: 'I have been tinkering with various cloud platforms for a while now. I have attended several workshops and events held my Google, Amazon and Microsoft where I learned about different types of cloud infrastructures and how each of them achieves a very important goal. I would love to know more about these in future.',
+              center: [ '/assets/images/cloud.png' ],
             },
           ]
         },
@@ -526,21 +525,13 @@ export default {
         overflow-x: hidden;
         padding-top: 5rem;
         padding-bottom: 3rem;
-        flex-wrap: wrap;
-        &.both, &.center {
+        flex-direction: column;
+        &.center {
           h1 {
             text-align: center;
           }
           p {
             text-align: center;
-          }
-        }
-        &.both {
-          .left {
-            margin-left: -7rem;
-          }
-          .right {
-            margin-right: -7rem;
           }
         }
         &.center {
@@ -578,10 +569,20 @@ export default {
               text-align: left;
             }
             p {
-              text-align: left;
+              text-align: justify;
             }
             h5 {
               text-align: left;
+            }
+          }
+          .center {
+            display: flex;
+            justify-content: center;
+            margin: 0 1rem;
+            padding: 0 1rem;
+            overflow: hidden;
+            img {
+              width: 100%;
             }
           }
         }
@@ -662,7 +663,7 @@ export default {
           width: 100%;
           max-width: 1200px;
           border-radius: 5px;
-          box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+          // box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
         }
         .left {
           flex: 2;
@@ -716,6 +717,12 @@ export default {
               p {
                 text-align: center;
               }
+            }
+            .center {
+              .images {
+                width: 100%;
+                padding: 1rem;
+              }  
             }
           }
           &.both {

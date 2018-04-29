@@ -2,15 +2,22 @@
   <div class="body_container">
     <transition name="fade">
       <div class="loader" v-if="loading" key="loading">
-        <div class="lds-roller">
+        <div class="lds-ellipsis">
           <div></div>
           <div></div>
           <div></div>
           <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+        </div>
+        <div class="loading">
+          <div class="loading-text">
+            <span class="loading-text-words">L</span>
+            <span class="loading-text-words">O</span>
+            <span class="loading-text-words">A</span>
+            <span class="loading-text-words">D</span>
+            <span class="loading-text-words">I</span>
+            <span class="loading-text-words">N</span>
+            <span class="loading-text-words">G</span>
+          </div>
         </div>
       </div>
       <div v-else key="notLoading">
@@ -30,11 +37,11 @@
             <div class="summary">
               <p>
                 I like to be confident about what I'm doing and I also try to mange my time properly. To me time management is the most important
-                aspect of someone's life. Along with time management, a professional attitude and behavior is what makes a person
-                perfect. I want to be that kind of person. I want to create new project ideas and I intend to lead the project
-                I take or Manage. I always try to keep myself updated with new ideas. To summarize myself I am a person who would
-                like to be professional, wants to take the lead, provide better idea, have a professional attitude and have better
-                time management.
+                aspect of someone's life. Along with time management, a professional attitude and behavior is what makes
+                a person perfect. I want to be that kind of person. I want to create new project ideas and I intend to lead
+                the project I take or Manage. I always try to keep myself updated with new ideas. To summarize myself I am
+                a person who would like to be professional, wants to take the lead, provide better idea, have a professional
+                attitude and have better time management.
               </p>
             </div>
             <div class="social">
@@ -164,6 +171,16 @@
     }
   }
 
+  @keyframes blur-text {
+    0% {
+      filter: blur(0px);
+    }
+    100% {
+      filter: blur(4px);
+    }
+  }
+
+
   .body_container {
     .loader {
       height: 100vh;
@@ -178,6 +195,7 @@
       align-items: center;
       background-color: $color2;
       z-index: 999;
+      flex-direction: column;
     }
     .front {
       display: flex;
@@ -190,6 +208,7 @@
         justify-content: center;
         align-items: center;
         flex: 1;
+        overflow-x: hidden;
         .fork {
           position: absolute;
           opacity: 0.4;
@@ -416,6 +435,99 @@
           }
         }
       }
+    }
+  }
+
+  @import url(https://fonts.googleapis.com/css?family=Quattrocento+Sans);
+
+  @keyframes blur-text {
+    0% {
+      filter: blur(0px);
+    }
+    100% {
+      filter: blur(4px);
+    }
+  }
+
+  .loading-text {
+    line-height: 100px;
+    span {
+      display: inline-block;
+      margin: 0 5px;
+      color: $color1;
+      font-family: "Quattrocento Sans", sans-serif;
+      font-size: 1.5rem;
+      @for $i from 0 through 6 {
+        &:nth-child(#{$i + 1}) {
+          filter: blur(0px);
+          animation: blur-text 1.5s (#{$i/5})+s infinite linear alternate;
+        }
+      }
+    }
+  }
+
+
+  .lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 64px;
+    height: 64px;
+  }
+
+  .lds-ellipsis div {
+    position: absolute;
+    top: 27px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: $color1;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+
+  .lds-ellipsis div:nth-child(1) {
+    left: 6px;
+    animation: lds-ellipsis1 0.6s infinite;
+  }
+
+  .lds-ellipsis div:nth-child(2) {
+    left: 6px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+
+  .lds-ellipsis div:nth-child(3) {
+    left: 26px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+
+  .lds-ellipsis div:nth-child(4) {
+    left: 45px;
+    animation: lds-ellipsis3 0.6s infinite;
+  }
+
+  @keyframes lds-ellipsis1 {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes lds-ellipsis3 {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+
+  @keyframes lds-ellipsis2 {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(19px, 0);
     }
   }
 </style>

@@ -25,7 +25,7 @@
         >
           <h1>{{ item.title }}<i class="ion-android-open" v-if="item.url" v-on:click="openLink(item.url)"></i></h1>
           <h5 v-if="item.subtitle">{{ item.subtitle }}</h5>
-          <p>{{ item.description }}</p>
+          <div class="des_container"><p>{{ item.description }}</p></div>
           <h3 v-if="item.type !== 'center' && item.skills">Skills Gained</h3>
           <div class="skills" v-if="item.type !== 'center'">
             <div
@@ -234,7 +234,7 @@ export default {
               description: "This project aims to optimize the execution of GraphQL, an API query language used by thousands of developers and millions of mobile, desktop and web applications. The end product of this project is a library, which can parse and validate GraphQL query and optimize them. It uses a relatively new language called ReasonML, which was created keeping performance in mind.",
               center: [
                 '',
-                '/assets/images/graphql.PNG',
+                '/assets/images/graphql.png',
                 ''
               ],
               skills: [
@@ -600,25 +600,6 @@ export default {
             }
           }
         }
-        &.invisible {
-          .description {
-            h1 {
-              text-align: left;
-              opacity: 0;
-              transform: translateY(2rem);
-            }
-            p {
-              text-align: left;
-              opacity: 0;
-              transform: translateY(2rem);
-            }
-            h5 {
-              text-align: left;
-              opacity: 0;
-              transform: translateY(2rem);
-            }
-          }
-        }
         .description {
           flex: 2;
           margin: 0 1rem;
@@ -664,17 +645,22 @@ export default {
               transition: 0.2s all;
               font-size: 0.8rem;
               padding: 0 0.2rem;
-              background-color: $color5;
-              color: $color4;
+              background-color: $color1;
               p {
                 text-align: center;
+                color: $color2;
               }
               border-radius: 5px;
             }
           }
         }
+        .images {
+          display: inline;
+          text-align: center;
+        }
         img {
           width: 100%;
+          max-width: 1200px;
           border-radius: 5px;
           box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
         }
@@ -702,10 +688,6 @@ export default {
             h5 {
               font-size: 0.7rem;
             }
-          }
-          .left {
-          }
-          .right {
           }
           &.left {
             padding: 0;
@@ -747,8 +729,6 @@ export default {
             }
           }
         }
-      }
-      .devrantron {
       }
       .aws {
         &.center {
@@ -804,6 +784,26 @@ export default {
           }
         }
       }
+      .graphql-reason {
+        &.center {
+          .center {
+            img {
+              box-shadow: none;
+            }
+            .images {
+              flex: 0;
+              min-width: 90vh;
+            }
+          }
+        }
+      }
+      .des_container {
+        display: flex;
+        justify-content: center;
+        p {
+          max-width: 1200px;
+        }
+      }
       .webdev {
         &.center {
           .center {
@@ -816,8 +816,6 @@ export default {
             }
           }
         }
-      }
-      .lluvium {
       }
       .plookify {
         img {

@@ -7,25 +7,36 @@
 <style lang="scss">
 @import './assets/stylesheets/palette.scss';
 
+html {
+  background-color: $color2;
+}
+
 body {
-  margin: 0 3px 0 0;
+  margin: 0;
   @media (max-width:480px)  {
     margin: 0;
   }
   padding: 0;
-  background-color: $color4;
+  background-color: $color2;
   .app {
     height: 100vh;
   }
-  transform: translateZ(0)
+  transform: translateZ(0);
 }
 
 p {
   font-family: 'Heebo', sans-serif;
+  color: $color1;
+}
+h1, h2, h3, h5 {
+  color: $color1;
+}
+span {
+  color: $color1;
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 7px;
   margin: 0;
   padding: 0;
 }
